@@ -15,3 +15,6 @@ dependencies = [
     "nemoguardrails>=0.24.0",
     "streamlit>=1.63.0",
 ]
+[tool.pyright]
+extraPaths = ["."]
+
