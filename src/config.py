@@ -28,7 +28,7 @@ GROQ_MODELS = {
 
 # Default models
 GUARD_MODEL_DEFAULT = "meta-llama/llama-prompt-guard-2-86m"
-CHAT_MODEL_DEFAULT = "GPT-OSS · 20B"
+CHAT_MODEL_DEFAULT = "openai/gpt-oss-20b"
 
 
 HR_SYSTEM_PROMPT = (
