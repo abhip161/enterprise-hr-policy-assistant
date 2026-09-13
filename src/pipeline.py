@@ -21,6 +21,12 @@ from src.config import HR_SYSTEM_PROMPT, SENSITIVE_OUTPUT_PATTERNS
 
 _executor = ThreadPoolExecutor(max_workers=4, thread_name_prefix="nemo")
 
+_THINK_RE = re.compile(r"<think>.*?</think>\s*", flags=re.DOTALL)
+
+
+def strip_thinking_block(text: str) -> str:
+    """Remove <think>...</think> reasoning blocks that Qwen models may emit."""
+    return _THINK_RE.sub("", text).strip()
 
 
 def check_output(text: str) -> list:
@@ -96,7 +102,7 @@ def run_pipeline(message: str, groq_key: str, guard_model: str, chat_model: str,
             {"role": "system", "content": HR_SYSTEM_PROMPT.format(context=context_text)},
             {"role": "user",   "content": message},
         ])
-        answer = resp.content
+        answer = strip_thinking_block(resp.content)
     except Exception:
         gen_error = tb.format_exc()
         answer    = "LLM call failed — see trace for details."
