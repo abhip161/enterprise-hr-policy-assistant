@@ -45,7 +45,7 @@ def run_pipeline(message: str, groq_key: str, guard_model: str, chat_model: str,
 
     # ── LLM 1 — NeMo input rails 
     def _nemo_worker():
-        llm   = ChatGroq(api_key=groq_key, model=guard_model, temperature=0)
+        llm   = ChatGroq(api_key=groq_key, model=chat_model, temperature=0)
         rails = build_rails(llm)
         async def _run():
             return await rails.generate_async(
