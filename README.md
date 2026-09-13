@@ -1,4 +1,4 @@
-# HR Policy Assistant — NeMo Guardrails + RAG Demo
+# HR Policy Assistant — NeMo Guardrails + RAG 
 
 A production-style demo showing **NVIDIA NeMo Guardrails acting as a semantic security gate in front of a RAG (Retrieval-Augmented Generation) pipeline**. Built with Streamlit, FAISS, and Groq.
 
